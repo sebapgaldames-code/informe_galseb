@@ -21,3 +21,8 @@ Investigación forense: incautación de servidores, análisis de logs, trazabili
 
     Sanciones: van desde multas y comiso hasta presidio en delitos graves; además, reclamaciones civiles por daños y medidas de bloqueo y eliminación de contenidos. 
 
+6) Protección de los derechos de los consumidores (Ley 19.496)  
+La Ley 19.496 regula las relaciones entre proveedores y consumidores y sanciona prácticas comerciales abusivas y publicidad engañosa. Si la plataforma ofreció servicios, cobros, suscripciones o promociones (reales o simuladas)  podrían activarse reclamaciones administrativas y acciones colectivas ante SERNAC y tribunales civiles.
+
+
+
