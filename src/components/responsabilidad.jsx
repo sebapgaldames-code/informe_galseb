@@ -1,6 +1,6 @@
 const actores = [
   {
-    rol: 'Operadores y administradores',
+    rol: '👨‍💻 Operadores y administradores',
     desc: 'Propietarios y administradores técnicos responsables de garantizar la legalidad de la operación y proteger la integridad, disponibilidad y confidencialidad de los sistemas.',
     riesgos: [
       { tipo: 'Penal', detalle: 'Delitos tipificados en Ley 21.459: acceso ilícito, interceptación.' },
@@ -10,7 +10,7 @@ const actores = [
     nivel: 'alto',
   },
   {
-    rol: 'Proveedores de hosting, cloud y CDN',
+    rol: '🖥️ Proveedores de hosting, cloud y CDN',
     desc: 'Obligados a custodiar y entregar información según la ley y órdenes judiciales, aplicar políticas de uso aceptable y suspender servicios ante órdenes judiciales o abuso comprobado.',
     riesgos: [
       { tipo: 'Administrativo', detalle: 'Multas por incumplimiento de obligaciones sectoriales o contractuales.' },
@@ -20,7 +20,7 @@ const actores = [
     nivel: 'medio',
   },
   {
-    rol: 'Usuarios y víctimas',
+    rol: '👤 Usuarios y víctimas',
     desc: 'Generalmente sin responsabilidad penal, salvo uso fraudulento de datos por terceros. Pueden ejercer acciones civiles y administrativas como titulares de derechos afectados.',
     riesgos: [
       { tipo: 'Recomendado', detalle: 'Recopilar pruebas (capturas, comunicaciones) y cambiar credenciales.' },
@@ -33,8 +33,11 @@ const actores = [
 export default function Responsabilidad() {
   return (
     <article className="doc-section">
-      <div className="section-badge">Responsabilidades</div>
-      <h2 className="section-title">Cadena de responsabilidad legal</h2>
+      <div className="section-badge">🏛️ Responsabilidades</div>
+      <h2 className="section-title">
+        <span className="title-emoji">🔗</span>
+        Cadena de responsabilidad legal
+      </h2>
 
       <div className="lead-block">
         <p>
@@ -52,7 +55,9 @@ export default function Responsabilidad() {
                 <h3 className="actor-rol">{a.rol}</h3>
                 <p className="actor-desc">{a.desc}</p>
               </div>
-              <span className={`riesgo-badge ${a.nivel}`}>{a.nivel === 'alto' ? 'Riesgo alto' : a.nivel === 'medio' ? 'Riesgo medio' : 'Sin riesgo penal'}</span>
+              <span className={`riesgo-badge ${a.nivel}`}>
+                {a.nivel === 'alto' ? '🔴 Riesgo alto' : a.nivel === 'medio' ? '🟡 Riesgo medio' : '🟢 Sin riesgo penal'}
+              </span>
             </div>
             <div className="riesgos-grid">
               {a.riesgos.map((r) => (
