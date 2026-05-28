@@ -3,7 +3,7 @@ import './App.css'
 import Resumen from './components/resumen'
 import Marco from './components/marco'
 import Delitos from './components/delitos'
-import Comparasion from './components/comparasion'
+import Comparacion from './components/comparación'
 import Responsabilidad from './components/responsabilidad'
 import Datos from './components/datos'
 import Conclusion from './components/conclusion'
@@ -12,7 +12,7 @@ const sections = [
   { key: 'resumen', label: 'Resumen', component: <Resumen /> },
   { key: 'marco', label: 'Marco', component: <Marco /> },
   { key: 'delitos', label: 'Delitos', component: <Delitos /> },
-  { key: 'comparasion', label: 'Comparación', component: <Comparasion /> },
+  { key: 'comparacion', label: 'Comparación', component: <Comparacion /> },
   { key: 'responsabilidad', label: 'Responsabilidad', component: <Responsabilidad /> },
   { key: 'datos', label: 'Datos', component: <Datos /> },
   { key: 'conclusiones', label: 'Conclusiones', component: <Conclusion /> },

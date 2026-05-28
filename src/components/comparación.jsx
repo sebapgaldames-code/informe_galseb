@@ -36,7 +36,7 @@ const marcos = [
 
 const nivelLabel = ['', 'Baja', 'Media', 'Alta']
 
-export default function Comparasion() {
+export default function Comparacion() {
   return (
     <article className="doc-section">
       <div className="section-badge">Derecho comparado</div>
