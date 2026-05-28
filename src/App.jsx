@@ -20,7 +20,7 @@ const sections = [
 
 export default function App() {
   const [active, setActive] = useState('resumen')
-  const [dark, setDark] = useState(false)
+  const [dark, setDark] = useState(true)
   const current = sections.find((s) => s.key === active)
 
   useEffect(() => {
