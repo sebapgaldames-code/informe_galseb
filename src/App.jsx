@@ -1,77 +1,63 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
-
-const markdownFiles = import.meta.glob('../docs_galseb/*.md', { as: 'raw' })
+import Resumen from './components/resumen'
+import Marco from './components/marco'
+import Delitos from './components/delitos'
+import Comparasion from './components/comparasion'
+import Responsabilidad from './components/responsabilidad'
+import Datos from './components/datos'
+import Conclusion from './components/conclusion'
 
 const sections = [
-  { key: 'resumen', title: 'Resumen', file: '01_resumen_galseb.md', icon: '📝' },
-  { key: 'marco', title: 'Marco', file: '02_marco_galseb.md', icon: '📚' },
-  { key: 'delitos', title: 'Delitos', file: '03_delitos_galseb.md', icon: '⚖️' },
-  { key: 'comparasion', title: 'Comparación', file: '04_comparasion_galseb.md', icon: '🔍' },
-  { key: 'responsabilidad', title: 'Responsabilidad', file: '05_responsabilidades_galseb.md', icon: '🏛️' },
-  { key: 'datos', title: 'Datos', file: '06_datos_galseb.md', icon: '📊' },
-  { key: 'conclusiones', title: 'Conclusiones', file: '07_conclusiones_galseb.md', icon: '✅' },
+  { key: 'resumen', label: 'Resumen', component: <Resumen /> },
+  { key: 'marco', label: 'Marco', component: <Marco /> },
+  { key: 'delitos', label: 'Delitos', component: <Delitos /> },
+  { key: 'comparasion', label: 'Comparación', component: <Comparasion /> },
+  { key: 'responsabilidad', label: 'Responsabilidad', component: <Responsabilidad /> },
+  { key: 'datos', label: 'Datos', component: <Datos /> },
+  { key: 'conclusiones', label: 'Conclusiones', component: <Conclusion /> },
 ]
 
-function transformMarkdownHeadings(text, icon) {
-  return text.replace(/^(\s*)#+\s+/gm, `$1${icon} `)
-}
-
-function App() {
-  const [selectedKey, setSelectedKey] = useState(sections[0].key)
-  const [content, setContent] = useState('')
-
-  useEffect(() => {
-    const section = sections.find((item) => item.key === selectedKey)
-    if (!section) {
-      setContent('Sección no encontrada.')
-      return
-    }
-
-    const path = `../docs_galseb/${section.file}`
-    const loader = markdownFiles[path]
-
-    if (!loader) {
-      setContent('No se encontró el archivo markdown.')
-      return
-    }
-
-    setContent('Cargando contenido...')
-    loader().then((text) => {
-      setContent(transformMarkdownHeadings(text, section.icon))
-    })
-  }, [selectedKey])
-
-  const currentSection = sections.find((item) => item.key === selectedKey)
+export default function App() {
+  const [active, setActive] = useState('resumen')
+  const current = sections.find((s) => s.key === active)
 
   return (
-    <main className="page">
-      <header className="hero-section">
-        <h1>Informe Galseb</h1>
-        <p>Selecciona que seccion quieres revisar su contenido.</p>
+    <div className="app-shell">
+      <header className="app-header">
+        <div className="header-inner">
+          <div className="header-brand">
+            <span className="brand-dot" />
+            <span className="brand-text">Informe Galseb</span>
+          </div>
+          <p className="header-sub">Análisis legal · TuMangaOnline · 2026</p>
+        </div>
       </header>
 
-      <nav className="button-bar">
-        {sections.map((section) => (
-          <button
-            key={section.key}
-            type="button"
-            className={`tab-button ${section.key === selectedKey ? 'active' : ''}`}
-            onClick={() => setSelectedKey(section.key)}
-          >
-            {section.key}
-          </button>
-        ))}
+      <nav className="app-nav">
+        <div className="nav-inner">
+          {sections.map((s) => (
+            <button
+              key={s.key}
+              type="button"
+              className={`nav-btn ${s.key === active ? 'active' : ''}`}
+              onClick={() => setActive(s.key)}
+            >
+              {s.label}
+            </button>
+          ))}
+        </div>
       </nav>
 
-      <section className="content-panel">
-        <div className="content-header">
-          <h2>{currentSection?.title}</h2>
+      <main className="app-main">
+        <div className="main-inner">
+          {current?.component}
         </div>
-        <pre className="markdown-content">{content || 'Cargando...'}</pre>
-      </section>
-    </main>
+      </main>
+
+      <footer className="app-footer">
+        <span>Informe Galseb — Uso interno</span>
+      </footer>
+    </div>
   )
 }
-
-export default App
